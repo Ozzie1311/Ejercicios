@@ -194,20 +194,90 @@
 
 // console.log(entries[0])
 
-const customerDishes = [
-  'Chicken Wings',
-  'Fish Sandwich',
-  'Beef Stroganoff',
-  'Grilled Cheese',
-  'Blue Cheese Salad',
-  'Chicken Wings',
-  'Reuben Sandwich',
-  'Grilled Cheese',
-  'Fish Sandwich',
-  'Chicken Pot Pie',
-  'Fish Sandwich',
-  'Beef Stroganoff',
-]
+// const customerDishes = [
+//   'Chicken Wings',
+//   'Fish Sandwich',
+//   'Beef Stroganoff',
+//   'Grilled Cheese',
+//   'Blue Cheese Salad',
+//   'Chicken Wings',
+//   'Reuben Sandwich',
+//   'Grilled Cheese',
+//   'Fish Sandwich',
+//   'Chicken Pot Pie',
+//   'Fish Sandwich',
+//   'Beef Stroganoff',
+// ]
 
-const uniqueValues = [...new Set(customerDishes)]
-console.log(uniqueValues)
+// const uniqueValues = [...new Set(customerDishes)]
+// console.log(uniqueValues)
+
+/** Algunos Ejercicios con el método Reduce
+ * 1) Usa reduce usa reduce para sumar el valor de la propiedad númerica en todos los objetos.
+ */
+
+// const productos = [
+//   { nombre: 'Camisa', precio: 25 },
+//   { nombre: 'Pantalón', precio: 40 },
+//   { nombre: 'Zapatos', precio: 60 },
+//   { nombre: 'Calcetines', precio: 10 },
+// ]
+
+// const precioTotal = productos.reduce((acc, { precio }) => acc + precio, 0)
+// console.log(precioTotal)
+
+/**
+ * 2) Dado un array de palabras, usa reduce para crear un objeto que cuente cuantas veces aparece cada palabra
+ */
+
+// const palabras = ['manzana', 'banana', 'manzana', 'naranja', 'banana', 'manzana']
+
+// const conteoPalabras = palabras.reduce((acc, palabra) => {
+//   Object.hasOwn(acc, palabra) ? acc[palabra]++ : (acc[palabra] = 1)
+//   return acc
+// }, {})
+
+// console.log(conteoPalabras)
+
+/**
+ * 3) Tienes un array que contiene otros arrays (un array anidado). Usa reduce para aplanar esta estructura en un solo array.
+ */
+// const arraysAnidados = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+// ]
+const arrayAplanado = arraysAnidados.reduce((acc, cur) => {
+  return [...acc, ...cur]
+}, [])
+
+// console.log(arrayAplanado)
+
+function mapConReduce(array, callback) {
+  return array.reduce((acc, curr) => {
+    acc.push(callback(curr))
+    return acc
+  }, [])
+}
+
+// const numeros = [1, 2, 3, 4]
+// const duplicados = mapConReduce(numeros, (num) => num * 2) // Debería ser [2, 4, 6, 8]
+
+// console.log(duplicados)
+
+/**
+ * 5) De manera similar al ejercicio anterior, implementa la funcionalidad del método filter utilizando reduce.
+ */
+
+function filterConReduce(array, callback) {
+  return array.reduce((acc, curr) => {
+    if (callback(curr)) {
+      acc.push(curr)
+    }
+    return acc
+  }, [])
+}
+
+const edades = [10, 20, 30, 40, 50]
+const mayoresDe30 = filterConReduce(edades, (edad) => edad > 30) // Debería ser [40, 50]
+console.log(mayoresDe30)
