@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.resaltado {
+  background-color: palegoldenrod;
+  border: 2px solid black;
+  padding: 12px;
+}
+
+.oculto {
+  display: block;
+  background-color: palevioletred;
+  height: 150px;
+  border: 2px solid black;
+  margin-top: 15px;
+}
+
+#miBoton,
+#botonContador {
+  display: block;
+  padding: 4px 28px;
+  margin-top: 10px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+}
+
+#enviarBoton {
+  display: block;
+  padding: 2px 16px;
+}
+
+#miBoton:hover,
+#botonContador:hover {
+  border: 1px solid black;
+}
