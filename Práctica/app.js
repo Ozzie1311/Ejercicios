@@ -1,6 +1,6 @@
 class App {
   constructor() {
-    this.notes = []
+    this.notes = JSON.parse(localStorage.getItem('notes')) || []
     this.title = ''
     this.text = ''
     this.id = ''
@@ -15,7 +15,10 @@ class App {
     this.$modal = document.querySelector('.modal')
     this.$modalTitle = document.querySelector('.modal-title')
     this.$modalText = document.querySelector('.modal-text')
+    this.$modalCloseButton = document.querySelector('.modal-close-button')
+    this.$colorTooltip = document.getElementById('color-tooltip')
 
+    this.displayNotes()
     this.addEventListeners()
   }
 
@@ -24,6 +27,27 @@ class App {
       this.handleFormClick(event)
       this.selectNote(event)
       this.openModal(event)
+      this.deleteNote(event)
+    })
+
+    document.body.addEventListener('mouseover', (event) => {
+      this.openTooltip(event)
+    })
+
+    document.body.addEventListener('mouseout', (event) => {
+      this.closeTooltip(event)
+    })
+
+    this.$colorTooltip.addEventListener('mouseover', function (event) {
+      this.style.display = 'flex'
+    })
+
+    this.$colorTooltip.addEventListener('mouseout', function (event) {
+      this.style.display = 'none'
+    })
+
+    this.$colorTooltip.addEventListener('click', (event) => {
+      this.editColorNote(event)
     })
 
     this.$form.addEventListener('submit', (event) => {
@@ -40,6 +64,11 @@ class App {
     this.$formCloseButton.addEventListener('click', (event) => {
       event.stopPropagation()
       this.closeForm()
+    })
+
+    this.$modalCloseButton.addEventListener('click', (event) => {
+      event.stopPropagation()
+      this.closeModal(event)
     })
   }
 
@@ -77,6 +106,47 @@ class App {
     }
   }
 
+  closeModal() {
+    this.editNote()
+    this.$modal.classList.toggle('open-modal')
+  }
+
+  openTooltip(event) {
+    if (!event.target.matches('.toolbar-color')) return
+    this.id = event.target.dataset.id
+    const noteCoords = event.target.getBoundingClientRect()
+    const horizontal = noteCoords.left
+    const vertical = window.scrollY - 30
+    this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`
+    this.$colorTooltip.style.display = 'flex'
+  }
+
+  closeTooltip(event) {
+    if (!event.target.matches('.toolbar-color')) return
+    this.$colorTooltip.style.display = 'none'
+  }
+
+  editNote() {
+    const title = this.$modalTitle.value
+    const text = this.$modalText.value
+    this.notes = this.notes.map((note) =>
+      note.id === Number(this.id) ? { ...note, title, text } : note
+    )
+    this.saveNotes()
+    this.displayNotes()
+  }
+
+  editColorNote(event) {
+    const color = event.target.dataset.color
+    if (color) {
+      this.notes = this.notes.map((note) =>
+        note.id === Number(this.id) ? { ...note, color } : note
+      )
+    }
+    this.saveNotes()
+    this.displayNotes()
+  }
+
   selectNote(event) {
     const $selectedNote = event.target.closest('.note')
     if (!$selectedNote) return
@@ -84,6 +154,15 @@ class App {
     this.title = $noteTitle.innerText
     this.text = $noteText.innerText
     this.id = $selectedNote.dataset.id
+  }
+
+  deleteNote(event) {
+    event.stopPropagation()
+    if (!event.target.matches('.toolbar-delete')) return
+    const id = event.target.dataset.id
+    this.notes = this.notes.filter((note) => note.id !== Number(id))
+    this.saveNotes()
+    this.displayNotes()
   }
 
   addNote({ title, text }) {
@@ -94,8 +173,13 @@ class App {
       id: this.notes.length > 0 ? this.notes[this.notes.length - 1].id + 1 : 1,
     }
     this.notes = [...this.notes, newNote]
+    this.saveNotes()
     this.displayNotes()
     this.closeForm()
+  }
+
+  saveNotes() {
+    localStorage.setItem('notes', JSON.stringify(this.notes))
   }
 
   displayNotes() {
@@ -116,7 +200,7 @@ class App {
               <svg data-id=${id} class="toolbar-edit"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
               </div>
             </div>
-          </div>`,
+          </div>`
       )
       .join('')
   }
