@@ -1,4 +1,6 @@
-export function getDate() {
-  const date = new Date()
-  return date
+export function getUser() {
+  return {
+    name: 'Clementine Bauch',
+    company: 'Romaguera-Jacobson',
+  }
 }
