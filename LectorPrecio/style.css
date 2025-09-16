@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #00380a;
+  background: linear-gradient(90deg, rgba(0, 56, 10, 1) 0%, rgba(18, 122, 34, 1) 50%, rgba(6, 130, 4, 1) 100%);
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+}
+
+.app-container {
+  margin-bottom: 5rem;
+}
+
+.rio-img {
+  width: 200px;
+  height: 150px;
+  margin-bottom: 3rem;
+}
+
+.tasa {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  opacity: 0.8;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.currency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.tasa h2 {
+  margin: 6px 0px;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 700;
+}
+
+.consulte {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  opacity: 0.8;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.product {
+  background-color: #021205;
+  max-width: 550px;
+  font-size: 1.35rem;
+  padding: 16px 32px;
+  gap: 15px;
+  border-radius: 4px;
+  /* border: 1px solid black; */
+  display: none;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'nombre nombre'
+    'usd bs';
+  text-align: center;
+}
+
+.product-name {
+  grid-area: nombre;
+  color: white;
+  opacity: 0.8;
+}
+
+.usd {
+  grid-area: usd;
+  display: block;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.bs {
+  grid-area: bs;
+  display: block;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.8;
+}
+
+svg {
+  color: white;
+  opacity: 0.8;
+}
+
+.input {
+  max-width: 300px;
+}
+
+input {
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  padding: 6px 24px;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  color: #000000;
+}
+
+span {
+  display: block;
+}
+
+button {
+  display: block;
+  margin-top: 0.25rem;
+  width: 100%;
+  padding: 6px 24px;
+  background-color: #021205;
+  color: white;
+  opacity: 0.85;
+  border: none;
+  font-family: Inter, sans-serif;
+  border-radius: 4px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.again {
+  display: none;
+}

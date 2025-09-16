@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="app-container">
+      <section class="container">
+        <div class="tasa">
+          <img class="rio-img" src="logo-rio.png" alt="Logo Rio" />
+          <div class="currency">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-coins"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 14c0 1.657 2.686 3 6 3s6 -1.343 6 -3s-2.686 -3 -6 -3s-6 1.343 -6 3z" />
+              <path d="M9 14v4c0 1.656 2.686 3 6 3s6 -1.344 6 -3v-4" />
+              <path
+                d="M3 6c0 1.072 1.144 2.062 3 2.598s4.144 .536 6 0c1.856 -.536 3 -1.526 3 -2.598c0 -1.072 -1.144 -2.062 -3 -2.598s-4.144 -.536 -6 0c-1.856 .536 -3 1.526 -3 2.598z"
+              />
+              <path d="M3 6v10c0 .888 .772 1.45 2 2" />
+              <path d="M3 11c0 .888 .772 1.45 2 2" />
+            </svg>
+            Tasa del día
+          </div>
+          <div class="div">
+            <h2 id="tasa"></h2>
+          </div>
+        </div>
+        <section class="product">
+          <div class="product-name"></div>
+          <div class="usd">
+            REF:
+            <span id="priceUSD"></span>
+          </div>
+          <div class="bs">
+            BS:
+            <span id="priceBS"></span>
+          </div>
+        </section>
+        <div class="consulte">
+          Consulte su precio aquí
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="80"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 5l0 14" />
+            <path d="M18 13l-6 6" />
+            <path d="M6 13l6 6" />
+          </svg>
+        </div>
+      </section>
+      <section class="input">
+        <input type="text" />
+        <button>Escanear</button>
+      </section>
+      <section class="again">
+        <button class="esc-again">Escanear otro producto</button>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
