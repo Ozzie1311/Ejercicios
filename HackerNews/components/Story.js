@@ -1,17 +1,17 @@
-export default function Story({ index, url, title, domain, points, user, time_ago, comments_count, id }) {
+export default function Story(story) {
   return `
   <div class="story">
     <div>
-      <span class="gray">${index}</span>
+      <span class="gray">${story.index || ''}</span>
       <span class="upvote">▲</span>
-      <a href="${url}">${title}</a>
-      <span>(${domain})</span>
+      <a href="${story.url}">${story.title}</a>
+      <span>(${story.domain})</span>
     </div>
     <div class="gray">
-      ${points} points by ${user} ${time_ago}
+      ${story.points} points by ${story.user} ${story.time_ago}
       |
-      <a href="#/item?id=${id}" data-navigo>
-        ${comments_count} comments
+      <a href="#/item?id=${story.id}" data-navigo>
+        ${story.comments_count} comments
       </a>
       |
       <span class="favorite">
