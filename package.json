@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@fontsource-variable/inter": "^5.2.6"
+    "@fontsource-variable/inter": "^5.2.6",
+    "navigo": "^8.11.1"
   }
 }
