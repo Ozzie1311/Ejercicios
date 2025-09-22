@@ -1,9 +1,19 @@
 import Story from '../components/Story.js'
+import Comment from '../components/Comment.js'
 import view from '../utils/view.js'
 
 export default async function Item() {
   const story = await getStory()
-  view.innerHTML = `<div>${Story()}</div>`
+  console.log(story)
+  const hasComments = story.comments.length > 0
+
+  view.innerHTML = `
+    <div>
+      ${Story(story)}
+    </div>
+    <hr/>
+    ${hasComments ? story.comments.map((comment) => Comment(comment)).join('') : ''}
+  `
 }
 
 async function getStory() {
