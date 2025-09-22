@@ -1,4 +1,5 @@
 export default function Story(story) {
+  if (!story) return
   return `
   <div class="story">
     <div>
@@ -10,7 +11,7 @@ export default function Story(story) {
     <div class="gray">
       ${story.points} points by ${story.user} ${story.time_ago}
       |
-      <a href="#/item?id=${story.id}" data-navigo>
+      <a href="#/item?id=${story.id}">
         ${story.comments_count} comments
       </a>
       |

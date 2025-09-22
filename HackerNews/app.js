@@ -1,10 +1,17 @@
 import RouterHandler from './router.js'
 
 window.onhashchange = () => {
+<<<<<<< HEAD
   setActiveLinks()
 }
 
 function setActiveLinks() {
+=======
+  setActiveLink()
+}
+
+function setActiveLink() {
+>>>>>>> 4a8f4ee (??)
   const links = document.querySelectorAll('.header-link')
   links.forEach((link) => {
     const linkPath = link.getAttribute('href')
