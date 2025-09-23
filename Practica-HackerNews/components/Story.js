@@ -1,4 +1,5 @@
 export default function Story(story) {
+  // if (!story) return
   return `
   <div class="story">
     <div>

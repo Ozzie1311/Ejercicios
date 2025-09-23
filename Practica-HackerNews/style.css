@@ -23,19 +23,6 @@ a:visited {
   cursor: pointer;
 }
 
-.flex {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flex-left {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .heart {
   height: 12px;
 }
